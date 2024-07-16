@@ -12,9 +12,6 @@ do {
   // 무조건 한번은 실행한다
   console.log(num2);
 } while (num2 < 10);
-{
-  num2++;
-}
 
 for (let i = 0; i < 10; i++) {
   console.log(i);
