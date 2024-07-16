@@ -1,6 +1,14 @@
 // 산술 연산자
 // 덧셈(+), 뺄셈(-), 곱셈(*), 나눗셈(/), 나머지(%)
 
+// 덧셈: 문자열 연결 기능을 추가적으로 가진다
+let x = "A";
+const y = "B";
+console.log(x + y); // AB
+
+x += "C";
+console.log(x); // AC
+
 // ES6 템플릿 문자열
 const maxLevel = 99;
 const message = `최고 레벨은 ${maxLevel}입니다.`;
