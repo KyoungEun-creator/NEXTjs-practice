@@ -39,19 +39,52 @@ for (let value of arr) {
 ```;
 
 // Q1. [연습문제 - 1부터 9까지 출력하기]
-for (i = 1; i < 10; i++) {
+// 방법1
+for (let i = 1; i < 10; i++) {
   console.log(i);
+}
+// 방법2
+let num = 1;
+while (num < 10) {
+  console.log(num);
+  num++;
+}
+// 방법3
+let num = 1;
+do {
+  console.log(num);
+  num++;
+} while (num < 10);
+// 방법4
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (let value of arr) {
+  console.log(value);
+}
+// 방법5
+const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (let index of arr) {
+  console.log(arr[index + 1]);
 }
 
 /* Q2. [연습문제 - 음수 걸러내기]
 배열에 음수값이 섞여있습니다. 
 음수는 제외하고 양수들만 골라내어 합을 구하세요.
 */
+// 방법1
 let numArr = [10, -10, 20, -30, 40];
 let sum_val = 0;
 for (i = 0; i < numArr.length; i++) {
   if (numArr[i] > 0) {
     sum_val += numArr[i];
+  }
+}
+console.log(sum_val); // 70
+// 방법2
+let numArr = [10, -10, 20, -30, 40];
+let sum_val = 0;
+for (let value of numArr) {
+  if (value > 0) {
+    sum_val += value;
   }
 }
 console.log(sum_val); // 70
@@ -70,9 +103,14 @@ console.log(sum_val); // 70
 ... 중략 .. 
 15 홀수
 */
+// 방법1
 for (i = 0; i < 16; i++) {
   if (i % 2 == 0) console.log(i, "짝수");
   else console.log(i, "홀수");
+}
+// 방법2
+for (i = 0; i < 16; i++) {
+  i % 2 == 0 ? console.log(i, "짝수") : console.log(i, "홀수");
 }
 
 /* Q4. [연습문제 - 암스트롱 수 구하기]
@@ -86,8 +124,9 @@ for (i = 0; i < 16; i++) {
 이와 같은 수를 암스트롱의 수라고 말합니다.
 */
 
-//153
+// 각 자릿수마다 분리하는 것이 이 문제의 핵심!
 
+// 방법1
 for (let i = 100; i < 1000; i++) {
   let hundred = Math.floor(i / 100);
   let ten = Math.floor((i % 100) / 10);
@@ -96,6 +135,16 @@ for (let i = 100; i < 1000; i++) {
   let value = hundred ** 3 + ten ** 3 + one ** 3;
 
   if (i === value) {
-    console.log(i);
+    console.log(i); //153 370 371 407
   }
+}
+// 방법2
+for (let i = 100; i < 1000; i++) {
+  // 일의 자리: 456 % 10 = 6
+  // 십의 자리: (456 - 6) / 10 % 10 = 5
+  // 백의 자리: ((456 - 6) - (5 * 10)) / 100 = 4
+  const num1 = i % 10;
+  const num2 = ((i - num1) / 10) % 10;
+  const num3 = (i - num1 - num2 * 10) / 100;
+  i === num1 ** 3 + num2 ** 3 + num3 ** 3 && console.log(i);
 }
