@@ -148,3 +148,16 @@ for (let i = 100; i < 1000; i++) {
   const num3 = (i - num1 - num2 * 10) / 100;
   i === num1 ** 3 + num2 ** 3 + num3 ** 3 && console.log(i);
 }
+// 방법3
+for (let i = 1; i <= 9; i++) {
+  // 백의 자리
+  for (let j = 0; j <= 9; j++) {
+    // 십의 자리
+    for (let k = 0; k <= 9; k++) {
+      // 일의 자리
+      const result = i ** 3 + j ** 3 + k ** 3;
+      const value = i * 100 + j * 10 + k;
+      if (result === value) console.log(value);
+    }
+  }
+}
