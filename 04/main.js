@@ -12,8 +12,9 @@ User.prototype.introduce = function () {
 
 console.dir(user1);
 
-// 없는 속성을 요청하면 undefined 반환
-console.log(user1.introduce22); //undefined
+// 존재하지 않는 속성을 (함수로) 요청하면
+console.log(user1.introduce22); // undefined
+console.log(user1.introduce22()); // TypeError: user1.introduce22 is not a function
 
 console.log(User.prototype.introduce());
 // name: undefined, age: undefined, gender: undefined
