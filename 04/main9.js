@@ -19,7 +19,7 @@ const students = [
   console.log(height185);
 }
 
-//2. 나이가 20살 이상인 학생들 찾기
+// 2. 나이가 20살 이상인 학생들 찾기
 {
   const over20 = students.filter((elem) => elem.age >= 20);
   console.log(over20);
@@ -85,6 +85,24 @@ const students = [
   females.forEach((elem) => femaleAges.push(elem.age));
   console.log(Math.min(...femaleAges));
 }
+{
+  const students = [
+    { name: "Alice", age: 21, gender: "male", height: 170 },
+    { name: "Bob", age: 19, gender: "male", height: 165 },
+    { name: "Charlie", age: 20, gender: "male", height: 175 },
+    { name: "David", age: 22, gender: "male", height: 180 },
+    { name: "Eve", age: 17, gender: "female", height: 160 },
+    { name: "Frank", age: 18, gender: "male", height: 175 },
+    { name: "Grace", age: 21, gender: "female", height: 165 },
+    { name: "Henry", age: 19, gender: "male", height: 170 },
+    { name: "Ivy", age: 20, gender: "female", height: 155 },
+    { name: "Jack", age: 22, gender: "male", height: 185 },
+  ];
+  const youngestFemle = students
+    .filter((elem) => elem.gender === "female")
+    .sort((a, b) => a.age - b.age)[0]; // 어린 것부터 정렬 후 추출
+  console.log(youngestFemle.name);
+}
 
 // 연습문제
 ```
@@ -97,6 +115,7 @@ const students = [
   ```;
 
 function reverse_to_number(number) {
+  // 입력 123
   strNum = number.toString();
   // console.log(strNum.split("")); // [ '1', '2', '3' ]
   reverseStrNums = strNum.split("").reverse();
@@ -105,6 +124,7 @@ function reverse_to_number(number) {
   console.log(joinStrNum); // 321(str)
 
   return parseInt(joinStrNum);
+  // return Number(joinStrNum);
   // parseInt(number.toString().split("").reverse().join(""));
 }
 
@@ -130,6 +150,24 @@ function findLongStr(str) {
     }
   }
   return longest;
+}
+
+// sort
+// 가장 긴 것부터 내림차순 정렬 후 첫 번째 단어 출력
+function findLongStr(str) {
+  return str.split(" ").sort((a, b) => b.length - a.length)[0];
+  return str
+    .split(" ")
+    .sort((a, b) => b.length - a.length)
+    .shift();
+}
+
+// sort, shift
+function findLongStr(str) {
+  return str
+    .split(" ")
+    .sort((a, b) => b.length - a.length)
+    .shift();
 }
 
 let result = findLongStr("we are the champion");
