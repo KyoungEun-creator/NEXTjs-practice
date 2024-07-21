@@ -52,3 +52,43 @@
     age: 20,
   };
 }
+
+// 3. 리터럴 타입: string타입이나 number타입을 명확하게(타이트하게) 지정하는 타입
+{
+  let num: 10 = 10;
+  // num = 20 이렇게 재할당 불가하다
+
+  // 유니온 타입(|)을 이용한 해결
+  let num2: 10 | 20 = 10;
+  num2 = 20;
+  let str: "A" | "B" = "A";
+  str = "B";
+  let obj = {
+    name: "Kim", // obj.name의 타입은 string 타입
+  };
+
+  // name이 Kim 타입
+  const printName = (name: "Kim") => {
+    console.log(name);
+  };
+  printName("Kim");
+  // printName(obj.name);
+  // 에러 발생!! obj.name(type: string)과 printName의 name(type: Kim)의 타입이 서로 다르기 때문
+
+  let obj2 = {
+    name: "Kim", // obj.name의 타입은 string 타입
+  } as const;
+
+  /*
+  let obj2 = ({ name: "Kim" } = {
+    name: "Kim", // obj.name의 타입은 string 타입
+  } as const);
+   */
+
+  // name이 Kim 타입
+  const printName2 = (name: "Kim") => {
+    console.log(name);
+  };
+  printName2("Kim");
+  printName2(obj2.name);
+}
