@@ -104,3 +104,67 @@
     age: 20,
   };
 }
+
+// 5. 인터페이스
+{
+  /*
+  const obj: { name: string; age: number; gender: string; height: number } = {
+    name: "kim",
+    age: 20,
+    gender: "male",
+    height: 180,
+  };
+  // 너무 지저분하잖아!!
+  */
+
+  interface IUser {
+    name: string;
+    readonly age: number; // readonly
+    gender?: string;
+  }
+  // 병합
+  interface IUser {
+    height: number;
+  }
+  // 상속
+  interface IJob extends IUser {
+    title: string;
+  }
+  // 인덱스 시그니처 (I로 시작)
+  interface ISignature {
+    [key: string]: string | number;
+  }
+
+  const obj: ISignature = {
+    name: "kim",
+    age: 20,
+    gender: "male",
+    height: 180,
+  };
+
+  // 재사용성 대박!
+  const obj2: IUser = {
+    name: "jo",
+    age: 20,
+    // gender: "female",  (옵셔널 프로퍼티이기 때문)
+    height: 170,
+  };
+
+  const obj3: IJob = {
+    name: "jo",
+    age: 20,
+    // gender: "female",
+    height: 170,
+    title: "developer",
+  };
+
+  /*
+    interface의 특징
+    1) readonly 키워드 : 외부 객체에서 동적으로 값을 바꿀 수 없게 함
+    2) 옵셔널 프로퍼티 optional property
+    3) 병합 : 똑같은 이름의 interface는 서로 병합된다
+    4) 상속 : extends를 이용해 다른 interface를 나에게 상속한다
+    5) 이름의 앞에 'I'를 붙어주기로 약속~
+    6) 인덱스 시그니처 : 자유도가 너어무 높아서 어떤 속성이 있는지에 대한 자동완성을 제공할 수 없다 (잘 안 씀)
+  */
+}
