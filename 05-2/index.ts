@@ -1,4 +1,4 @@
-// 타입 추론
+// 1. 타입 추론
 {
   let num = 10;
   const num2 = 10;
@@ -30,4 +30,25 @@
     return `${a + b}입니다.`;
   };
   add2(10, 30);
+}
+
+// 2. 타입 명시
+{
+  // 타입이 대문자로 시작(: 생성자 함수 객체) 할 경우
+  let num: Number = 10;
+  let str: String = "hello";
+  // let으로 정의된 변수는 생성자함수 생성 가능
+  num = new Number(20);
+  str = new String("world");
+
+  // 튜플 tuple
+  const arr2: [number, string, number] = [1, "d", 3];
+  const arr3: (number | string)[] = [1, "d", 3];
+
+  // 객체
+  const obj: {} = {};
+  const obj2: { name: string; age: number } = {
+    name: "kim",
+    age: 20,
+  };
 }
