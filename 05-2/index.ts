@@ -228,3 +228,53 @@
 
   printUserName(user1);
 }
+
+// 7. 제네릭: 타입을 미리 지정하지 않고, 사용하는 시점에 타입을 정의해서 쓸 수 있는 문법
+{
+  // 기존: 타입 종류가 많아질수록 넘 복잡해진다..
+  const firstElements = (elem: number[] | string[]): number | string => {
+    return elem[0];
+  };
+  console.log(firstElements([1, 2, 3]));
+  console.log(firstElements(["a", "b", "c"]));
+  // console.log(firstElements([(true, false)])); 미리 정의되어 있지 않은 타입을 썼기 때문에 오류
+
+  // 함수를 호출할 때 그 타입을 정의할 수 있게 하는 것!
+  // 꺽쇠 안에 타입으로 치환되어 들어간다는 것 (T는 그저 의례적인 것일 뿐)
+  // 타입의 공통 처리
+  const firstElements2 = <T>(elements: T[]) => {
+    return elements[0];
+  };
+  console.log(firstElements2<number>([1, 2, 3]));
+  console.log(firstElements2<number>([1, 2, 3]));
+  console.log(firstElements2<boolean>([true, false]));
+
+  // 예시
+  type TCar<T> = {
+    name: string;
+    options: T; // <T>에 따라 치환됨
+  };
+
+  const car1: TCar<string> = {
+    name: "sonata",
+    options: "auto",
+  };
+
+  const car2: TCar<string[]> = {
+    name: "sonata",
+    options: ["auto", "sunroof"],
+  };
+
+  // 예시: 뭐든 다 들어올 수 있음
+  const getLength = <T>(item: T): void => console.log(item);
+  console.log(getLength([1, 2, 3]));
+  console.log(getLength("a"));
+  console.log(getLength(10));
+
+  // 타입 제약
+  // 제네릭의 extends는 '제한'의 의미
+  const getLength2 = <T extends { length: number }>(item: T): void => console.log(item);
+  console.log(getLength2([1, 2, 3]));
+  console.log(getLength2("a"));
+  // console.log(getLength2(10)); // 숫자는 length 속성이 없기 때문
+}
