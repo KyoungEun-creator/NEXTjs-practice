@@ -168,3 +168,63 @@
     6) 인덱스 시그니처 : 자유도가 너어무 높아서 어떤 속성이 있는지에 대한 자동완성을 제공할 수 없다 (잘 안 씀)
   */
 }
+
+// 6. 타입 별칭: 새로운 타입을 정의하는 방법
+{
+  // 기존: 기본적으로 만들어놓은 타입들만 사용했다면 (string, number, object, [], boolean 등.. )
+  const phoneColor: "red" | "orange" | "yellow" | "green" | "blue" | "purple" = "orange";
+
+  // 내가 만든 타입에 대한 인터페이스 개념
+  // 이름의 앞에 'T'를 붙어주기로 약속~
+  type TRainbowColor = "red" | "orange" | "yellow" | "green" | "blue" | "purple";
+  const phoneColor2: TRainbowColor = "orange";
+
+  type TUseStatus = "Y" | "N";
+  let useYn: TUseStatus = "Y";
+
+  type TUser = {
+    name: string;
+  };
+  type TJob = {
+    title: string;
+  };
+  type TUserAndJob = TUser & TJob; // 상속으로 extends 대신 인터세션 타입(&) 사용
+  const user1: TUserAndJob = {
+    name: "Kim",
+    title: "developer",
+  };
+
+  // 타입별치의 특징 및 인터페이스와의 차이
+  /*
+    1) 상속 개념 없음 extends 사용 불가
+    2) 대신 인터세션 타입(&)을 이용
+    3) 자동 병합 안 됨
+    4) 인터페이스에 비해 툴팁 설명이 더 구체적임! good~
+    5) readonly 똑같이 가능
+    6) optional property 똑같이 가능
+  */
+}
+
+{
+  type TUser = {
+    name: string;
+    age: number;
+  };
+
+  const user1: TUser = {
+    name: "Kim",
+    age: 20,
+  };
+
+  function printUserName(user: TUser) {
+    console.log(user.name);
+  }
+  // 비구조화 할당하면
+  /*
+  function printUserName({ name, age }: TUser) {
+    console.log(name);
+  }
+  */
+
+  printUserName(user1);
+}
