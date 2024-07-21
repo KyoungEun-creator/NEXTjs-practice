@@ -92,3 +92,15 @@
   printName2("Kim");
   printName2(obj2.name);
 }
+
+// 4. 타입 오퍼레이터:  타입을 조작하는 연산자
+{
+  // 4-1. 유니온 타입: OR 연산자(|)를 이용해 여러 타입 중 하나를 선택하게 함
+  const arr: (number | string)[] = [1, "A", 4];
+
+  // 4-2. 인터세션 타입: AND 연산자(&)를 이용해 여러 타입을 조합함 (둘다 있어야 함)
+  const obj: { name: string } & { age: number } = {
+    name: "kim",
+    age: 20,
+  };
+}
