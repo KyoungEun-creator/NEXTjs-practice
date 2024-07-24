@@ -1,20 +1,23 @@
 import React from "react";
+import { useId } from "react";
 
 type TCheckBoxProps = React.ComponentPropsWithoutRef<"input"> & {
   onToggle?: () => void;
 };
 
 const Checkbox = ({ children, onToggle, ...rest }: TCheckBoxProps) => {
+  const uuid = useId();
+
   return (
     <div className="flex items-center gap-2 relative">
       <input
         type="checkbox"
-        id="agree"
+        id={uuid}
         className="appearance-none w-5 h-5 border border-[#4F4F4F] rounded-[5px] bg-white checked:bg-[#4F4F4F] peer/agree"
         {...rest}
         onChange={onToggle}
       />
-      <label htmlFor="agree" className="text-sm inter">
+      <label htmlFor={uuid} className="text-sm inter">
         {children}
       </label>
       <svg
