@@ -8,3 +8,14 @@
     @apply flex items-center justify-center min-h-screen;
   }
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #363636;
+}
+img {
+  cursor: pointer;
+}

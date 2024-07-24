@@ -1,2 +1,6 @@
 @import "./tailwind.css";
 @import "./fonts.css";
+
+.bg-img {
+  background-image: url("../images/sailboat-8582847_1280.jpg");
+}
