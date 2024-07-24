@@ -6,7 +6,7 @@ const Button = ({ className, children, ...rest }: TButtonProps) => {
     <>
       <button
         className={twMerge(
-          "w-[77px] h-[44px] text-sm text-white rounded-lg cursor-pointer",
+          "w-full h-[44px] text-sm text-white rounded-lg cursor-pointer",
           className
         )}
         {...rest}

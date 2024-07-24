@@ -7,7 +7,7 @@ const Input = ({ className, ...rest }: TInputProps) => {
     <>
       <input
         className={twMerge(
-          `w-[240px] h-[44px] rounded-lg placeholder:text-[#acacac] border border-[#4F4F4F] py-[13.5px] px-[16px] text-sm outline-none`,
+          `w-full h-[44px] rounded-lg placeholder:text-[#acacac] border border-[#4F4F4F] py-[13.5px] px-[16px] text-sm outline-none`,
           className
         )}
         {...rest}

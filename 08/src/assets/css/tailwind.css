@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-  /* 아이템 수평 수직 중앙 정렬/ */
+  /* 아이템 수평 & 수직 중앙 정렬 */
   .item-middle {
-    @apply flex items-center justify-center min-h-full;
+    @apply flex items-center justify-center min-h-screen;
   }
 }
