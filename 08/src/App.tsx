@@ -1,30 +1,24 @@
 import React from "react";
-import ListItem from "./components/html/ListItem";
+import { useState } from "react";
 
 const App = () => {
-  const fruits = ["apple", "banana", "apple", "cherry"];
-  const users = [
-    {
-      name: "Mike",
-      age: 20,
-    },
-    {
-      name: "John",
-      age: 23,
-    },
-  ];
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <ul>
-        {/* key 값에 단순 index를 넣기보단 '고유하다는 보장'이 있는 값을 넣어주는 것을 지향할 것 */}
-        {fruits.map((fruit, index) => {
-          return <li key={index}>{fruit}</li>;
-        })}
-
-        {users.map(({ name, age }) => {
-          return <ListItem key={name} name={name} age={age} />;
-        })}
-      </ul>
+      <h1>Count: {count}</h1>
+      <button
+        onClick={() => {
+          // setCount(count + 1);
+          // setCount(count + 1);
+          // setCount(count + 1);
+          setCount((currentValue) => currentValue + 1);
+          setCount((currentValue) => currentValue + 1);
+          setCount((currentValue) => currentValue + 1);
+        }}
+      >
+        증가
+      </button>
     </>
   );
 };
