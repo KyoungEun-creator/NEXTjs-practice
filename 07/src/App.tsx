@@ -8,7 +8,7 @@ const App = () => {
         <div className="flex flex-col gap-2">
           <Input
             type="password"
-            placeholder=" Todo List!!!!!"
+            placeholder="Todo List!!!!!"
             onChange={() => {
               console.log("onchange");
             }}
