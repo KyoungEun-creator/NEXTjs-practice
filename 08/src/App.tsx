@@ -1,10 +1,10 @@
 import React from "react";
-import TodoPractice from "./components/html/TodoPractice";
+import TodoAgain from "./components/html/TodoAgain";
 
 const App = () => {
   return (
     <>
-      <TodoPractice />
+      <TodoAgain />
     </>
   );
 };
