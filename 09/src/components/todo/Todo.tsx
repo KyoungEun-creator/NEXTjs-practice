@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import Input from "../html/Input";
 import Button from "../html/Button";
 import Checkbox from "../html/Checkbox";
 import TodoEditor from "./TodoEditor";
 import TodoList from "./TodoList";
+import { todoReducer } from "../reducer/todoReducer";
 
 export type TTodo = {
   id: number;
@@ -11,26 +12,7 @@ export type TTodo = {
   isCompleted: boolean;
 };
 const Todo = () => {
-  const [todos, setTodos] = useState<TTodo[]>([]);
-
-  const addTodo = (text: string) => {
-    const newTodo = {
-      id: Date.now(),
-      text: text,
-      isCompleted: false,
-    };
-    setTodos((todos) => [...todos, newTodo]);
-  };
-
-  const toggleTodo = (id: number) => {
-    setTodos((todos) =>
-      todos.map((todo) => (todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
-    );
-  };
-
-  const deleteTodo = (id: number) => {
-    setTodos((todos) => todos.filter((todo) => todo.id !== id));
-  };
+  const [todos, dispatch] = useReducer(todoReducer, []);
 
   return (
     <>
@@ -39,9 +21,9 @@ const Todo = () => {
           <h1 className="text-xl font-bold mb-[10px]">Todo List App</h1>
           <p className="text-sm mb-5">Please enter your details to continue.</p>
           {/* 등록 */}
-          <TodoEditor addTodo={addTodo} />
+          <TodoEditor dispatch={dispatch} />
           {/* 목록 */}
-          <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+          <TodoList todos={todos} dispatch={dispatch} />
         </div>
       </div>
     </>

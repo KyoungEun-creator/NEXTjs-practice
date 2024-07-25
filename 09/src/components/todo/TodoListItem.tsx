@@ -1,31 +1,32 @@
 import React from "react";
-import Checkbox from "../html/Checkbox";
 import Button from "../html/Button";
-import { TTodo } from "./Todo";
 import { twMerge } from "tailwind-merge";
+import { TTodo, TTodoAction } from "../reducer/todoReducer";
+import Checkbox from "../html/Checkbox";
 
 const TodoListItem = ({
   todo,
-  toggleTodo,
-  deleteTodo,
+  dispatch,
 }: {
   todo: TTodo;
-  toggleTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
+  dispatch: React.Dispatch<TTodoAction>;
 }) => {
   return (
     <li
       key={todo.id}
       className="flex items-center justify-between border border-[#4F4F4F] h-[44px] px-[15px] rounded-lg bg-[rgba(53,56,62,0.05)] select-none shrink-0"
     >
-      <Checkbox checked={todo.isCompleted} onToggle={() => toggleTodo(todo.id)}>
+      <Checkbox
+        checked={todo.isCompleted}
+        onToggle={() => dispatch({ type: "TOGGLE_TODO", payload: todo.id })}
+      >
         <span className={twMerge("text-[#35383E]", todo.isCompleted && "line-through")}>
           {todo.text}
         </span>
       </Checkbox>
       <Button
-        onClick={() => deleteTodo(todo.id)}
         className="border border-[#4f4f4f] rounded w-[23px] h-[23px] flex justify-center items-center"
+        onClick={() => dispatch({ type: "DELETE_TODO", payload: todo.id })}
       >
         <svg
           width="15"
@@ -50,4 +51,4 @@ const TodoListItem = ({
   );
 };
 
-export default TodoListItem;
+export default React.memo(TodoListItem);
