@@ -1,14 +1,10 @@
 import React from "react";
-
-import TodoContextProvider from "./context/todoContext";
-import Todo from "./components/todo-series/todo_context/Todo";
+import Page from "./components/lean/Page";
 
 const App = () => {
   return (
     <>
-      <TodoContextProvider>
-        <Todo />
-      </TodoContextProvider>
+      <Page />
     </>
   );
 };
