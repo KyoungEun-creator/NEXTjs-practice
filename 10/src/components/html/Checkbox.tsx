@@ -5,7 +5,7 @@ type TCheckBoxProps = React.ComponentPropsWithoutRef<"input"> & {
   onToggle?: () => void;
 };
 
-const Checkbox = ({ children, onToggle, ...rest }: TCheckBoxProps) => {
+const CheckBox = ({ children, onToggle, ...rest }: TCheckBoxProps) => {
   const uuid = useId();
 
   return (
@@ -38,4 +38,4 @@ const Checkbox = ({ children, onToggle, ...rest }: TCheckBoxProps) => {
   );
 };
 
-export default Checkbox;
+export default CheckBox;

@@ -1,19 +1,7 @@
-import React, { useReducer, useState } from "react";
-import Input from "../html/Input";
-import Button from "../html/Button";
-import Checkbox from "../html/CheckBox";
 import TodoEditor from "./TodoEditor";
 import TodoList from "./TodoList";
-import { todoReducer } from "../reducer/todoReducer";
 
-export type TTodo = {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-};
 const Todo = () => {
-  const [todos, dispatch] = useReducer(todoReducer, []);
-
   return (
     <>
       <div className="item-middle bg-black">
@@ -21,9 +9,9 @@ const Todo = () => {
           <h1 className="text-xl font-bold mb-[10px]">Todo List App</h1>
           <p className="text-sm mb-5">Please enter your details to continue.</p>
           {/* 등록 */}
-          <TodoEditor dispatch={dispatch} />
+          <TodoEditor />
           {/* 목록 */}
-          <TodoList todos={todos} dispatch={dispatch} />
+          <TodoList />
         </div>
       </div>
     </>

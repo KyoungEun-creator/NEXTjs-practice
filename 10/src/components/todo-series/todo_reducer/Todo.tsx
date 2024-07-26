@@ -1,16 +1,8 @@
-import React, { useReducer, useState } from "react";
-import Input from "../html/Input";
-import Button from "../html/Button";
-import Checkbox from "../html/CheckBox";
+import { useReducer } from "react";
 import TodoEditor from "./TodoEditor";
 import TodoList from "./TodoList";
-import { todoReducer } from "../reducer/todoReducer";
+import { todoReducer } from "../../../reducer/todoReducer";
 
-export type TTodo = {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-};
 const Todo = () => {
   const [todos, dispatch] = useReducer(todoReducer, []);
 

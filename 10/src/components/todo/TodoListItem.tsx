@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../html/Button";
 import { twMerge } from "tailwind-merge";
 import { TTodo, TTodoAction } from "../reducer/todoReducer";
-import Checkbox from "../html/Checkbox";
+import Checkbox from "../html/CheckBox";
 
 const TodoListItem = ({
   todo,

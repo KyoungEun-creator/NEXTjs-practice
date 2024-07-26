@@ -1,15 +1,14 @@
 import React from "react";
-import CountProvider from "./ context/countContext";
-import Example1 from "./components/context/Example1";
-import Example2 from "./components/context/Example2";
+
+import TodoContextProvider from "./context/todoContext";
+import Todo from "./components/todo-series/todo_context/Todo";
 
 const App = () => {
   return (
     <>
-      <CountProvider>
-        <Example1 />
-        <Example2 />
-      </CountProvider>
+      <TodoContextProvider>
+        <Todo />
+      </TodoContextProvider>
     </>
   );
 };
