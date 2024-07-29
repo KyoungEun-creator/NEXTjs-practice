@@ -1,17 +1,18 @@
-import { useContext, useState } from "react";
-import Button from "../../html/Button";
-import Input from "../../html/Input";
-import { TodoContext } from "../../../context/todoContext";
+import { useState } from "react";
+import useTodoStore from "../stores/TodoStore";
+import Input from "../components/html/Input";
+import Button from "../components/html/Button";
 
 const TodoEditor = () => {
   const [text, setText] = useState("");
-  const { setTodos } = useContext(TodoContext); //공급받기
+
+  const addTodo = useTodoStore((state) => state.addTodo);
+
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTodos((todo) => [...todo, { id: Date.now(), text: text, isCompleted: false }]);
+    addTodo(text);
     setText("");
   };
-  console.log(text);
   return (
     <>
       <form className="grid gap-4" onSubmit={onSubmitHandler}>
